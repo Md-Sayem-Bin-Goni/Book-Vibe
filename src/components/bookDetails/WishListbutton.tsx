@@ -2,17 +2,16 @@
 import { BooksContext } from '@/contex/BooksContext';
 import { IBook } from '@/types/books.type';
 import React, { useContext } from 'react';
-import { toast } from 'react-toastify';
 
 const ReadButton = ({ book }: { book: IBook }) => {
 
-    const { readBooks, setReadBooks } = useContext(BooksContext)
+    const { wishList, setWishList } = useContext(BooksContext)
 
 
     const handleReadBook = () => {
-        console.log("read button trigger", book);
-        setReadBooks([...readBooks, book])
-        toast.success(`You have read "${book.bookName}"`)
+        console.log("WishList button trigger", book);
+        setWishList([...wishList, book])
+        toast.success(`You have added "${book.bookName}" to wishlist`)
     }
 
 
@@ -22,7 +21,7 @@ const ReadButton = ({ book }: { book: IBook }) => {
                 className="btn btn-success text-white px-8 rounded-xl"
                 onClick={handleReadBook}
             >
-                Read
+                Add to wishlist
             </button>
         </div>
     );

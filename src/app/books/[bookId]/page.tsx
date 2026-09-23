@@ -1,4 +1,5 @@
 import ReadButton from "@/components/bookDetails/ReadButton";
+import WishListbutton from "@/components/bookDetails/WishListbutton"
 import { IBook } from "@/types/books.type";
 import Image from "next/image";
 import Link from "next/link";
@@ -190,12 +191,7 @@ const BookDetailPage = async ({ params }: IBookDetailPage) => {
 
             <ReadButton book={book}/>
 
-              <Link
-                href="/books"
-                className="btn btn-outline px-8 rounded-xl"
-              >
-                Wishlist
-              </Link>
+           <WishListbutton book={book}/>
 
 
 
