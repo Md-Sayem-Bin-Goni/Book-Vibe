@@ -1,14 +1,16 @@
 import { IBook } from '@/types/books.type';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 interface IbookCardProps {
-    book : IBook;
+  book: IBook;
 }
 
-const BookCard = ({book} : IbookCardProps) => {
+const BookCard = ({ book }: IbookCardProps) => {
 
-const {
+  const {
+    bookId,
     bookName,
     author,
     image,
@@ -18,10 +20,12 @@ const {
     yearOfPublishing,
   } = book;
 
-    return (
-         <div className="group bg-white border border-gray-200 rounded-2xl p-5 
-                    hover:shadow-xl hover:-translate-y-1 
-                    transition-all duration-300">
+  return (
+    <div
+      className="group bg-white border border-gray-200 rounded-2xl p-5
+      hover:shadow-xl hover:-translate-y-1
+      transition-all duration-300"
+    >
 
       {/* Book Image */}
       <div className="bg-gray-100 rounded-xl p-6 flex justify-center overflow-hidden">
@@ -30,8 +34,8 @@ const {
           alt={bookName}
           width={180}
           height={250}
-          className="h-[250px] w-auto object-contain 
-                     group-hover:scale-105 transition-transform duration-300"
+          className="h-[250px] w-auto object-contain
+          group-hover:scale-105 transition-transform duration-300"
         />
       </div>
 
@@ -40,8 +44,8 @@ const {
         {tags.map((tag) => (
           <span
             key={tag}
-            className="bg-green-50 text-green-600 px-3 py-1 
-                       rounded-full text-sm font-medium"
+            className="bg-green-50 text-green-600 px-3 py-1
+            rounded-full text-sm font-medium"
           >
             {tag}
           </span>
@@ -63,11 +67,9 @@ const {
       {/* Bottom Info */}
       <div className="flex items-center justify-between text-sm">
 
-        <div>
-          <span className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full">
-            {category}
-          </span>
-        </div>
+        <span className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full">
+          {category}
+        </span>
 
         <div className="flex items-center gap-1 font-medium">
           <span>{rating}</span>
@@ -81,8 +83,16 @@ const {
         Published in {yearOfPublishing}
       </p>
 
+      {/* View Details Button */}
+      <Link
+        href={`/books/${bookId}`}
+        className="btn btn-success text-white w-full mt-5 rounded-xl"
+      >
+        View Details
+      </Link>
+
     </div>
-    );
+  );
 };
 
 export default BookCard;
